@@ -2,9 +2,7 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"strings"
-	"time"
 
 	"golang.org/x/sys/windows/registry"
 )
@@ -30,14 +28,6 @@ func main() {
 # - Duplicate Keys will be joined into one line with a semicolon
 
 	`)
-
-	editFilePath := fmt.Sprintf("%s\\envedit_%d.txt", os.TempDir(), time.Now().Unix())
-	editFile, err := os.Create(editFilePath)
-	if err != nil {
-		fmt.Printf("Error: Failed to create temp file for user to edit, details: %v\n", err)
-		return
-	}
-	defer editFile.Close()
 
 	oldEnv := make(map[string]string)
 
